@@ -6,7 +6,7 @@
 /*   By: stalash <stalash@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:56:22 by stalash           #+#    #+#             */
-/*   Updated: 2025/02/04 19:07:49 by stalash          ###   ########.fr       */
+/*   Updated: 2025/02/04 20:02:59 by stalash          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ bool	get_contact(const std::string &prompt, std::string &str)
 	if (str.empty())
 	{
 		std::cout<<"All fields must be filled"<<std::endl;
-		return (1);
+		return (0);
 	}
-	return(0);
+	return(1);
 }
 
 bool	ft_isAscii(const std::string &str)
 {
-	for (int i = 0; i < str.length(); i++)
+	for (size_t i = 0; i < str.length(); i++)
 		if (str[i] < 32 || str[i] > 126)
 			return (std::cout<<"The string should be Printable\n", false);
 	return (true);
@@ -37,7 +37,7 @@ bool	ft_isAscii(const std::string &str)
 
 bool	ft_isPhoneNumberValid(const std::string &phone_number)
 {
-	int i = 0;
+	size_t i = 0;
 	if (phone_number[0] == '+')
 		i = 1;
 	while (i < phone_number.length())
@@ -49,44 +49,103 @@ bool	ft_isPhoneNumberValid(const std::string &phone_number)
 	return (true);
 }
 
-bool	isValidContact(const std::string &first_name, const std::string &last_name, \
-						const std::string &nick_name, const std::string &phone_number, \
-						const std::string &darkest_secret)
-{
-	if (!ft_isAscii(first_name))
-		return (false);
-	if (!ft_isAscii(last_name))
-		return (false);
-	if (!ft_isAscii(nick_name))
-		return (false);
-	if (!ft_isAscii(darkest_secret))
-		return (false);
-	if (!ft_isPhoneNumberValid(phone_number))
-		return (false);
-	return (true);
-}
+// bool	isValidContact(const std::string &first_name, const std::string &last_name, 
+// 						const std::string &nick_name, 
+// 						const std::string &darkest_secret)
+// {
+// 	if (!ft_isAscii(first_name))
+// 		return (false);
+// 	if (!ft_isAscii(last_name))
+// 		return (false);
+// 	if (!ft_isAscii(nick_name))
+// 		return (false);
+// 	if (!ft_isAscii(darkest_secret))
+// 		return (false);
+// 	// if (!ft_isPhoneNumberValid(phone_number))
+// 	// 	return (false);
+// 	return (true);
+// }
 
 void	addContactToPhoneBook(PhoneBook &phone_book)
 {
 	contact	new_contact;
 	std::string	first_name, last_name, nick_name, phone_number, darkest_secret;
-	
-	if (get_contact("First Name: ", first_name)) return;
-	if (get_contact("Last Name: ", last_name)) return;
-	if (get_contact("Nick Name: ", nick_name)) return;
-	if (get_contact("Phone Number: ", phone_number)) return;
-	if (get_contact("Darkest Secret: ", darkest_secret)) return;
-	if (!isValidContact(first_name, last_name, nick_name, phone_number, darkest_secret))
-		return ;
-	else
+	if (!get_contact("First Name: ", first_name))
 	{
-		new_contact.set_first_name(first_name);
-		new_contact.set_last_name(last_name);
-		new_contact.set_nick_name(nick_name);
-		new_contact.set_phone_number(phone_number);
-		new_contact.set_darkest_secret(darkest_secret);
-		phone_book.add_info(new_contact);
+		std::cout<<"One more chance"<<std::endl;
+		if (!get_contact("First Name: ", first_name))
+			return ;
 	}
+	else if (get_contact("First Name: ", first_name))
+		if (!ft_isAscii(first_name))
+		{
+			std::cout<<"One more chance"<<std::endl;
+			if (get_contact("First Name: ", first_name))
+				if (!ft_isAscii(first_name))
+					return ;
+		}
+	if (!get_contact("Last Name: ", last_name))
+	{
+		std::cout<<"One more chance"<<std::endl;
+		if (!get_contact("Last Name: ", last_name))
+			return ;
+	}
+	else if (get_contact("Last Name: ", last_name))
+		if (!ft_isAscii(last_name))
+		{
+			std::cout<<"One more chance"<<std::endl;
+			if (get_contact("Last Name: ", last_name))
+				if (!ft_isAscii(last_name))
+					return ;
+		}
+	if (!get_contact("Nick Name: ", nick_name))
+	{
+		std::cout<<"One more chance"<<std::endl;
+		if (!get_contact("Nick Name: ", nick_name))
+			return ;
+	}
+	else if (get_contact("Nick Name: ", nick_name))
+		if (!ft_isAscii(nick_name))
+		{
+			std::cout<<"One more chance"<<std::endl;
+			if (get_contact("Nick Name: ", nick_name))
+				if (!ft_isAscii(nick_name))
+					return ;
+		}
+	if (!get_contact("Phone Number: ", phone_number))
+	{
+		std::cout<<"One more chance"<<std::endl;
+		if (!get_contact("Phone Number: ", phone_number))
+			return ;
+	}
+	else if (get_contact("Phone Number: ", phone_number))
+		if(!ft_isPhoneNumberValid(phone_number))
+		{
+			std::cout<<"One more chance"<<std::endl;
+			if (get_contact("Phone Number: ", phone_number))
+				if(!ft_isPhoneNumberValid(phone_number))
+					return ;
+		}
+	if (!get_contact("Darkest Secret: ", darkest_secret))
+	{
+		std::cout<<"One more chance"<<std::endl;
+		if (!get_contact("Darkest Secret: ", darkest_secret))
+			return ;
+	}
+	else if (get_contact("Darkest Secret: ", darkest_secret))
+		if (!ft_isAscii(darkest_secret))
+		{
+			std::cout<<"One more chance"<<std::endl;
+			if (get_contact("Darkest Secret: ", darkest_secret))
+				if (!ft_isAscii(darkest_secret))
+					return ;
+		}
+	new_contact.set_first_name(first_name);
+	new_contact.set_last_name(last_name);
+	new_contact.set_nick_name(nick_name);
+	new_contact.set_phone_number(phone_number);
+	new_contact.set_darkest_secret(darkest_secret);
+	phone_book.add_info(new_contact);
 }
 
 int	main()
