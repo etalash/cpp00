@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stalash <stalash@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 17:10:43 by stalash           #+#    #+#             */
-/*   Updated: 2025/02/02 18:36:29 by stalash          ###   ########.fr       */
+/*   Created: 2025/01/28 15:41:57 by stalash           #+#    #+#             */
+/*   Updated: 2025/01/30 16:34:46 by stalash          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int j = 1;
-	int i = 0;
-
 	if (argc < 2)
+		return (std::cout<< "* LOUD AND UNBEARABLE FEEDBACK NOISE *"<< std::endl, 0);
+	int i = 1;
+	while (argc > i)
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return 0;
-	}
-	while (j < argc)
-	{
-		while (argv[j][i])
+		std::string str = argv[i];
+		for (int j = 0; (int)str.size() > j; ++j)
 		{
-			argv[j][i] = std::toupper(static_cast<unsigned char>(argv[j][i]));
-			++i;
+			if (str[j] >= 'a' && str[j] <= 'z')
+				str[j] = std::toupper(static_cast<unsigned char>(str[j]));
 		}
-		++j;
+		std::cout<< str;
+		++i;
 	}
-	j = 1;
-	while (j < argc)
-	{
-		std::cout << argv[j];
-		if (j < argc - 1)
-			std::cout << " ";
-		++j;
-	}
-	std::cout << std::endl;
+	std::cout <<std::endl;
 	return (0);
 }

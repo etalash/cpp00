@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: stalash <stalash@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 19:17:29 by stalash           #+#    #+#             */
-/*   Updated: 2025/02/02 19:27:35 by stalash          ###   ########.fr       */
+/*   Created: 2025/02/03 16:02:50 by stalash           #+#    #+#             */
+/*   Updated: 2025/02/04 17:40:59 by stalash          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,18 @@
 class PhoneBook
 {
 private:
-	Contact contacts[8];
-	int contact_count;
-	int oldest_index;
-
+    contact	contacts[8];
+    int		index;
+	int		oldest_index;
 public:
-	PhoneBook();
-	void addContact(const Contact &new_contact);
-	void searchContacts() const;
-	void displayContact(int index) const;
+    PhoneBook()
+    {
+        index = 0;
+        oldest_index = 0;
+    }
+	void    add_info(const contact new_contact);
+    void    search_info()const;
+    void    display_info(int i)const;
 };
 
 #endif

@@ -5,34 +5,80 @@
 #                                                     +:+ +:+         +:+      #
 #    By: stalash <stalash@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/02 18:37:55 by stalash           #+#    #+#              #
-#    Updated: 2025/02/02 18:38:29 by stalash          ###   ########.fr        #
+#    Created: 2025/01/28 16:34:59 by stalash           #+#    #+#              #
+#    Updated: 2025/01/31 12:54:12 by stalash          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME        =   megaphone
+CC          =   c++
+CFLAGS      =   -Wall -Werror -Wextra -std=c++98
 
-TARGET = megaphone
+# directories
+SRC_DIR      =  src/
+OBJ_DIR      =  obj/
+INC_DIR      =  include/
 
-SRCS = megaphone.cpp
+# color codes
+RESET       =   \033[0m
+GREEN       =   \033[92m  # Bright green
+YELLOW      =   \033[93m  # Bright yellow
+BLUE        =   \033[94m  # Bright blue
+RED         =   \033[91m  # Bright red
 
-OBJS = $(SRCS:.cpp=.o)
 
-all: $(TARGET)
+# source files
+SRC_FILES    =   megaphone.cpp
 
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+OBJ_FILES    =   $(SRC_FILES:.cpp=.o)
 
+# paths
+SRC         =   $(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJ         =   $(addprefix $(OBJ_DIR), $(OBJ_FILES))
+
+# all rule
+all: $(NAME)
+	@echo "$(GREEN)            ___ ___        ___    _____    _     _   $(RESET)"
+	@echo "$(GREEN) ___ _ _   |   |   |   ___|  _|  |    _| _| |_ _| |_ $(RESET)"
+	@echo "$(GREEN)| -_|_'_|  | | | | |  | . |  _|  |   |_ |_   _|_   _|$(RESET)"
+	@echo "$(GREEN)|___|_,_|  |___|___|  |___|_|    |_____|  |_|   |_|  $(RESET)"
+	@echo "$(GREEN)                                                     $(RESET)"
+	@echo ""
+
+# compile the executable
+$(NAME): $(OBJ)
+	@echo "$(YELLOW)Compiling [$(NAME)]...$(RESET)"
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@echo "$(GREEN)Finished [$(NAME)]$(RESET)"
+
+# compile objects
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+	@mkdir -p $(OBJ_DIR)
+	@echo "$(YELLOW)Compiling [$@]...$(RESET)"
+	@$(CC) $(CFLAGS) -I $(INC_DIR) -o $@ -c $<
+	@echo "$(GREEN)Finished [$@]$(RESET)"
+
+# clean rule
 clean:
-	rm -f $(OBJS) $(TARGET)
+	@if [ -d "$(OBJ_DIR)" ]; then \
+		rm -rf $(OBJ_DIR); \
+		echo "$(BLUE)Deleted all object files from $(OBJ_DIR)...$(RESET)"; \
+	else \
+		echo "$(RED)No objects to remove from $(OBJ_DIR).$(RESET)"; \
+	fi
 
+# fclean rule
 fclean: clean
-	rm -f $(TARGET)
+	@if [ -f "$(NAME)" ]; then \
+		rm -f $(NAME); \
+		echo "$(BLUE)Deleted executable $(NAME)...$(RESET)"; \
+	else \
+		echo "$(RED)No executable to remove from the project directory.$(RESET)"; \
+	fi
 
+# re rule
 re: fclean all
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
+# phony rules
 .PHONY: all clean fclean re
+

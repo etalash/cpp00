@@ -5,12 +5,10 @@
 #                                                     +:+ +:+         +:+      #
 #    By: stalash <stalash@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/02 19:27:56 by stalash           #+#    #+#              #
-#    Updated: 2025/02/02 19:28:07 by stalash          ###   ########.fr        #
+#    Created: 2025/02/04 19:08:10 by stalash           #+#    #+#              #
+#    Updated: 2025/02/04 19:08:18 by stalash          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# Makefile for the Phonebook Program
 
 CXX = g++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
