@@ -6,7 +6,7 @@
 #    By: stalash <stalash@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/28 16:34:59 by stalash           #+#    #+#              #
-#    Updated: 2025/01/31 12:54:12 by stalash          ###   ########.fr        #
+#    Updated: 2025/02/05 19:42:57 by stalash          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,12 +38,20 @@ OBJ         =   $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
 # all rule
 all: $(NAME)
-	@echo "$(GREEN)            ___ ___        ___    _____    _     _   $(RESET)"
-	@echo "$(GREEN) ___ _ _   |   |   |   ___|  _|  |    _| _| |_ _| |_ $(RESET)"
-	@echo "$(GREEN)| -_|_'_|  | | | | |  | . |  _|  |   |_ |_   _|_   _|$(RESET)"
-	@echo "$(GREEN)|___|_,_|  |___|___|  |___|_|    |_____|  |_|   |_|  $(RESET)"
-	@echo "$(GREEN)                                                     $(RESET)"
-	@echo ""
+	@echo "$(GREEN) _______           _______  _______ $(RESET)"
+	@echo "$(YELLOW)(  ____ \|\     /|(  __   )(  __   )$(RESET)"
+	@echo "$(BLUE)| (    \/( \   / )| (  )  || (  )  |$(RESET)"
+	@echo "$(RED)| (__     \ (_) / | | /   || | /   |$(RESET)"
+	@echo "$(CYAN)  |  __)     ) _ (  | (/ /) || (/ /) |$(RESET)"
+	@echo "$(MAGENTA)  | (       / ( ) \ |   / | ||   / | |$(RESET)"
+	@echo "$(GREEN)| (____/\( /   \ )|  (__) ||  (__) |$(RESET)"
+	@echo "$(YELLOW)(_______/|/     \|(_______)(_______)$(RESET)"
+	@echo "$(BLUE)                                    $(RESET)"
+	@echo "$(RED)                                    $(RESET)"
+	@echo "$(CYAN)                                    $(RESET)"
+	@echo "$(MAGENTA)                                    $(RESET)"
+	@echo "$(GREEN)                                    $(RESET)"
+	@echo "$(YELLOW)                                    $(RESET)"
 
 # compile the executable
 $(NAME): $(OBJ)

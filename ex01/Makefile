@@ -6,7 +6,7 @@
 #    By: stalash <stalash@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/04 19:08:10 by stalash           #+#    #+#              #
-#    Updated: 2025/02/04 19:24:43 by stalash          ###   ########.fr        #
+#    Updated: 2025/02/05 19:41:28 by stalash          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,13 +37,40 @@ SRC         =   $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ         =   $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
 # all rule
+# all: $(NAME)
+# 	@echo "$(GREEN) _______           _______  _______ $(RESET)"
+# 	@echo "$(YELLOW)(  ____ \|\     /|(  __   )(  __   )$(RESET)"
+# 	@echo "$(BLUE)| (    \/( \   / )| (  )  || (  )  |$(RESET)"
+# 	@echo "$(RED)| (__     \ (_) / | | /   || | /   |$(RESET)"
+# 	@echo "$(CYAN)  |  __)     ) _ (  | (/ /) || (/ /) |$(RESET)"
+# 	@echo "$(MAGENTA)  | (       / ( ) \ |   / | ||   / | |$(RESET)"
+# 	@echo "$(GREEN)| (____/\( /   \ )|  (__) ||  (__) |$(RESET)"
+# 	@echo "$(YELLOW)(_______/|/     \|(_______)(_______)$(RESET)"
+# 	@echo "$(BLUE)                                    $(RESET)"
+# 	@echo "$(RED)                                    $(RESET)"
+# 	@echo "$(CYAN)                                    $(RESET)"
+# 	@echo "$(MAGENTA)                                    $(RESET)"
+# 	@echo "$(GREEN)                                    $(RESET)"
+# 	@echo "$(YELLOW)                                    $(RESET)"
+
+# all rule
 all: $(NAME)
-	@echo "$(GREEN)            ___ ___        ___    _____    _     _   $(RESET)"
-	@echo "$(GREEN) ___ _ _   |   |   |   ___|  _|  |    _| _| |_ _| |_ $(RESET)"
-	@echo "$(GREEN)| -_|_'_|  | | | | |  | . |  _|  |   |_ |_   _|_   _|$(RESET)"
-	@echo "$(GREEN)|___|_,_|  |___|___|  |___|_|    |_____|  |_|   |_|  $(RESET)"
-	@echo "$(GREEN)                                                     $(RESET)"
-	@echo ""
+	@echo "$(GREEN) _______           _______  __   $(RESET)"
+	@echo "$(YELLOW)(  ____ \|\     /|(  __   )/  \  $(RESET)"
+	@echo "$(BLUE)| (    \/( \   / )| (  )  |\/) ) $(RESET)"
+	@echo "$(RED)| (__     \ (_) / | | /   |  | | $(RESET)"
+	@echo "$(CYAN)  |  __)     ) _ (  | (/ /) |  | | $(RESET)"
+	@echo "$(MAGENTA)  | (       / ( ) \ |   / | |  | | $(RESET)"
+	@echo "$(GREEN)| (____/\( /   \ )|  (__) |__) (_$(RESET)"
+	@echo "$(YELLOW)(_______/|/     \|(_______)\____/ $(RESET)"
+	@echo "$(BLUE)                                 $(RESET)"
+	@echo "$(RED)                                 $(RESET)"
+	@echo "$(CYAN)                                 $(RESET)"
+	@echo "$(MAGENTA)                                 $(RESET)"
+	@echo "$(GREEN)                                 $(RESET)"
+	@echo "$(YELLOW)                                 $(RESET)"
+
+
 
 # compile the executable
 $(NAME): $(OBJ)
@@ -81,4 +108,3 @@ re: fclean all
 
 # phony rules
 .PHONY: all clean fclean re
-
