@@ -20,6 +20,7 @@ This repository contains my **CPP00** project, which was my very **first C++ pro
 ```bash
 git clone <repo-url>
 cd cpp00
+cd ex00 or cd ex01 
 make
 ./<executable>
 ```
